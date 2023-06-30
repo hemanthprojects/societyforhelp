@@ -1,0 +1,300 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+  
+  <title>HELP NGO</title>
+  <script src="js/jquery-3.3.1.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      var form = $('#ajax-contact');
+      // Get the messages div.
+      var formMessages = $('#form-messages');
+      $(form).submit(function (event) {
+        event.preventDefault();
+        $.ajax({
+          type: "POST",
+          url: $(form).attr('action'),
+          data: $(this).serialize()
+        }).done(function (response) {
+          // Make sure that the formMessages div has the 'success' class.
+          $(formMessages).removeClass('error');
+          $(formMessages).addClass('success');
+
+          // Set the message text.
+          $(formMessages).text('Your Form has been successfully submitted');
+
+          // Clear the form.
+          $(form)[0].reset();
+        }).fail(function (data) {
+          // Make sure that the formMessages div has the 'error' class.
+          $(formMessages).removeClass('success');
+          $(formMessages).addClass('error');
+
+          // Set the message text.
+          if (data.responseText !== '') {
+            $(formMessages).text(data.responseText);
+          } else {
+            $(formMessages).text('Oops! An error occured and your message could not be sent.');
+          }
+        });
+      })
+    })
+  </script>
+  <style type="text/css">
+    body,
+    td,
+    th {
+      font-family: High Tower Text;
+    }
+
+    a:link {
+      text-decoration: none;
+    }
+
+    a:visited {
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: none;
+    }
+
+    a:active {
+      text-decoration: none;
+    }
+
+    .style62 {
+      font-size: 18px;
+      color: #000000;
+      font-family: "High Tower Text";
+    }
+
+    .style64 {
+      font-size: 18px;
+      color: #FFFFFF;
+      font-family: "High Tower Text";
+    }
+
+    .header {
+      padding: 0px 0px;
+    }
+
+    .content {
+      padding: 16px;
+    }
+
+    .sticky {
+      position: fixed;
+      top: 0;
+      width: 100%
+    }
+
+    .sticky+.content {
+      padding-top: 102px;
+    }
+
+    .style130 {
+      font-family: "High Tower Text";
+      font-size: 18px;
+    }
+  </style>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #FFFFFF;
+      background-image: url();
+    }
+
+    input[type=text],
+    input[type=tel],
+    input[type=email],
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      margin-top: 1px;
+      margin-bottom: 1px;
+      resize: vertical;
+    }
+
+    input[type=submit] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 1px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    input[type=submit]:hover {
+      background-color: #45a049;
+    }
+
+    .container {
+      border-radius: 5px;
+      background-color: #f2f2f2;
+      padding: 20px;
+    }
+
+    .style142 {
+      color: #336633;
+      font-size: 20px;
+    }
+
+    .style143 {
+      color: #000000
+    }
+
+    .style93 {
+      font-size: 16px;
+      font-family: "Book Antiqua";
+    }
+
+    .style152 {
+      color: #000000;
+      font-size: 24px;
+      font-family: "Book Antiqua";
+    }
+
+    .style155 {
+      font-size: 24px
+    }
+
+    .style149 {
+      font-size: 20px;
+      color: #009900;
+    }
+
+    .style94 {
+      color: #0000FF;
+      font-family: "Book Antiqua";
+      font-size: 14px;
+    }
+
+    .style94 {
+      color: #FFFFFF
+    }
+  .style159 {	font-size: 48px;
+	color: #006600;
+	font-weight: bold;
+	font-family: Alice;
+}
+  .style154 {font-family: Alice}
+.style160 {font-size: 15px; color: #FFFFFF;}
+.style161 {font-size: 16px}
+.style162 {	color: #FFFFFF;
+	font-family: "Book Antiqua";
+	font-size: 15px;
+}
+  .style170 {font-size: 20px}
+  .style176 {font-size: 14px; font-family: "Book Antiqua";}
+.style177 {font-weight: bold; font-size: 26px;}
+.style179 {color: #0000FF; font-family: "Book Antiqua"; font-size: 24px; }
+  .style79 {color: #000000; font-family: "Goudy Old Style"; font-size: 26px; }
+  .style182 {	color: #000099;
+	font-family: Alice;
+}
+  .style184 {font-size: 55px; color: #006600; font-weight: bold; font-family: Alice; }
+.style186 {color: #000000; font-family: Alice; font-size: 23px; }
+  .style187 {
+	font-size: 23px;
+	font-family: Alice;
+}
+.style191 {font-size: 38px; color: #2A1FFF; }
+.style193 {font-size: 38px; color: #000099; }
+  .style198 {font-size: 38px; color: #FF0000; }
+  .style199 {font-size: 9px; color: #006600; font-weight: bold; font-family: Alice; }
+.style202 {color: #FF0000}
+  </style>
+</head>
+
+<body>
+<div class="header" id="myHeader">
+  <table width="100%" border="0" cellpadding="2" cellspacing="4" bgcolor="#FFFFFF">
+    <tr>
+      <th width="5%" scope="col"> <a href="index.html"><img src="images/HEAD.jpg" alt="a" width="88" height="84" longdesc="https://helpsocity.co.in" /></a> </th>
+      <th valign="top" scope="col"> <div align="left"><span class="style184">HELP Society</span></div></th>
+    </tr>
+  </table>
+  <table width="100%" border="0" cellpadding="2" cellspacing="4" bgcolor="#FFFFFF">
+    <tr bgcolor="#FFFFFF">
+      <th width="12%" height="26" bgcolor="#FFFFFF" scope="col"><span class="style182"><strong>Reg. No.</strong> 18 of 2021</span></th>
+      <th width="12%" bgcolor="#D41F55" scope="col"> <a href="index.html" target="_parent" class="style64">Who We Are</a> </th>
+      <th width="12%" bgcolor="#7FDF00" scope="col"> <a href="aboutus.html" target="_parent" class="style62">What We Do</a> </th>
+      <th width="12%" bgcolor="#FF9966" scope="col"> <a href="services.html" target="_parent" class="style62">Where We Work </a> </th>
+      <th width="12%" bgcolor="#996666" scope="col"><a href="gallery.html" target="_parent" class="style64">Art &amp; Events</a></th>
+      <th width="12%" bgcolor="#FFFF00" scope="col"> <a href="contactus.html" target="_parent" class="style62">Contact Us </a> </th>
+      <th width="12%" bgcolor="#33FF99" scope="col"> <a href="donate.html" target="_parent" class="style64 style143">Donate</a> </th>
+      <th width="12%" bgcolor="#0099CC" scope="col"> <a href="Login.html" target="_parent" class="style64">Login</a> </th>
+    </tr>
+  </table>
+</div>
+<div class="content">
+  <table width="100%" border="0" cellspacing="4" cellpadding="2">
+      <tr>
+        <th width="29%" align="center" valign="top" bgcolor="#FFFFFF" scope="col"><p align="center" class="style90 style143"><span class="style79"><a href="images/MEETING.jpg"><img src="images/MEETING.jpg" alt="" width="266" height="194" border="0" /></a></span></p>
+          <p align="center" class="style90 style143">&nbsp;</p>
+          <p align="center" class="style90 style143"><a href="images/FOOD.jpg"><img src="images/FOOD.jpg" alt="" width="272" height="181" border="0" /></a></p>
+          <p align="center" class="style90 style143"><span class="style142 style143 style154 style176"><span class="style130 style154 style170"><u><span class="style177">CERTIFICATES</span></u></span></span></p>
+          <p align="center" class="style90 style94 style155"><span class="style152"><a href="data/1. Reg Certificate.pdf">Reg Certificate</a></span></p>
+          <p align="center" class="style90 style94 style155"><a href="data/2. BYE-LAW.pdf" class="style155">Bye-Law</a></p>
+          <p align="center" class="style90 style94 style155"><a href="data/3. PAN CARD.pdf" class="style155">PAN</a></p>
+          <p align="center" class="style90 style94 style155"><a href="data/4. TAN CARD.pdf" class="style155">TAN</a></p>
+          <p align="center" class="style90 style94 style155"><a href="data/5. 12A.pdf" class="style155">12 A</a></p>
+          <p align="center" class="style90 style94 style155"><a href="data/6. 80G.pdf" class="style155">80 G</a></p>
+          <p align="center" class="style90 style94 style155"><a href="data/7. Renewal 2020-2021.pdf" class="style155">2020-2021 Renewal</a></p>
+          <p align="center" class="style90 style94 style155"><a href="data/8. Renewal 2021-2022.pdf" class="style155">2021-2022 Renewal</a></p>
+        <p align="center" class="style90 style94"><span class="style179"><a href="data/9. Renewal 2022-2023.pdf">2022-2023 Renewal</a></span></p>        </th>
+        <th width="71%" align="left" valign="top" scope="col"><h1 class="style159"><span class="style191">Mission:</span></h1>
+          <p align="center" class="style186"> Serving at grassroots through empowerment of deprived children and communities by means of education, health and environmental initiatives to build respect to their dignity, justice, equity and improve quality of life for all.</p>
+          <h3 class="style187">&nbsp;</h3>
+          <h3 class="style187"><span class="style159"><span class="style198">Vision:</span></span></h3>
+          <p align="center" class="style186">A prosperous rural society that is built with positive communities for inclusive and sustainable development of everyone and in every village at grassroots. </p>
+          <p class="style199">&nbsp;</p>
+          <p class="style159"><span class="style193">Aims:</span></p>
+        <p align="center" class="style186"><strong>To take up construction activities  aimed to help poor for the progress of Agriculture<span class="style202">,</span> Health, Nutrition &amp;  Family Welfare<span class="style202">,</span> HIV/AIDS<span class="style202">,</span> Rural &amp; Urban Development &amp; Poverty Alleviation<span class="style202">,</span>  Animal Husbandry<span class="style202">,</span> Dairying &amp; Fisheries<span class="style202">,</span> Art &amp; Culture<span class="style202">,</span> Biotechnology<span class="style202">,</span>  Children<span class="style202">,</span> Civic Issues<span class="style202">,</span> Dalit Upliftment<span class="style202">,</span> Differently Abled<span class="style202">,</span> Disaster  Management<span class="style202">,</span> Drinking Water<span class="style202">,</span> Education &amp; Literacy<span class="style202">,</span> Aged / Elderly<span class="style202">,</span> Environment  &amp; Forests<span class="style202">,</span> Food Processing<span class="style202">,</span> Housing, Human Rights<span class="style202">,</span> Information &amp; Communication  Technology<span class="style202">,</span> Labour &amp; Employment<span class="style202">,</span> Land Resources<span class="style202">,</span> Legal Awareness &amp; Aid<span class="style202">,</span>  Micro Finance (SHGs)<span class="style202">,</span> Micro Small &amp; Medium Enterprises<span class="style202">,</span> Minority Issues<span class="style202">,</span>  New &amp; Renewable Energy<span class="style202">,</span> Prisoner&rsquo;s Issues<span class="style202">,</span> Right to Information &amp;  Advocacy<span class="style202">,</span> Science &amp; Technology<span class="style202">,</span> Scientific &amp; Industrial Research<span class="style202">,</span>  Sports<span class="style202">,</span> Tourism<span class="style202">,</span> Tribal Affairs<span class="style202">,</span> Vocational Training<span class="style202">,</span> Water Resources<span class="style202">,</span> Women&rsquo;s  Development &amp; Employment<span class="style202">,</span> &nbsp;Youth  Affairs<span class="style202">,</span> Economic Standards of Living<span class="style202">,</span> Socio-economic Schemes and Any Other.</strong></p>          </th>
+      </tr>
+</table>
+    <p align="center"><img src="images/FOOD.jpg" alt="A" width="1280" height="582" /></p>
+    <div align="justify" class="style93"><span class="style161"> <font size="2"> <font size="5"> <font size="3"> <font size="4">
+    <script>
+window.onscroll = function() {myFunction()};
+
+var header = document.getElementById("myHeader");
+var sticky = header.offsetTop;
+
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    header.classList.add("sticky");
+  } else {
+    header.classList.remove("sticky");
+  }
+}
+      </script>
+    <font color="#0000FF"><span class="style98"><span class="style154"><a href="index.html" class="footerlink"><strong>&copy; 
+  CopyRights Reserved 2021,&nbsp;&nbsp;</strong></a><strong>Designed &amp; Powered 
+  by JKGC.<span class="style160"> . </span></strong></span><strong><span class="style162">. . . . .</span></strong></span></font></font></font></font></font><font color="#0000FF"><span class="style98 style154"><strong><span class="style160"> . . . . . . . . . . . . . . . . . . . .. . . . . . . . . . . . . . . . . . .</span><span class="style149">Visitors 
+Count :</span><img src="http://hitwebcounter.com/counter/counter.php?page=6949344&amp;style=0009&amp;nbdigits=7&amp;type=ip&amp;initCount=0" title="" alt="a"   border="0" /></strong></span></font></span></div>
+    <p align="center" class="style143">
+      <script>
+        window.onscroll = function () { myFunction() };
+
+        var header = document.getElementById("myHeader");
+        var sticky = header.offsetTop;
+
+        function myFunction() {
+          if (window.pageYOffset >= sticky) {
+            header.classList.add("sticky");
+          } else {
+            header.classList.remove("sticky");
+          }
+        }
+      </script>
+    </p>
+</body>
+
+</html>
