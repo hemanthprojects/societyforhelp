@@ -1,0 +1,643 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+  
+  <title>HELP NGO</title>
+  <script src="js/jquery-3.3.1.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      var form = $('#ajax-contact');
+      // Get the messages div.
+      var formMessages = $('#form-messages');
+      $(form).submit(function (event) {
+        event.preventDefault();
+        $.ajax({
+          type: "POST",
+          url: $(form).attr('action'),
+          data: $(this).serialize()
+        }).done(function (response) {
+          // Make sure that the formMessages div has the 'success' class.
+          $(formMessages).removeClass('error');
+          $(formMessages).addClass('success');
+
+          // Set the message text.
+          $(formMessages).text('Your Form has been successfully submitted');
+
+          // Clear the form.
+          $(form)[0].reset();
+        }).fail(function (data) {
+          // Make sure that the formMessages div has the 'error' class.
+          $(formMessages).removeClass('success');
+          $(formMessages).addClass('error');
+
+          // Set the message text.
+          if (data.responseText !== '') {
+            $(formMessages).text(data.responseText);
+          } else {
+            $(formMessages).text('Oops! An error occured and your message could not be sent.');
+          }
+        });
+      })
+    })
+  </script>
+  <style type="text/css">
+    .style6 {
+      color: #FF0000
+    }
+
+    body,
+    td,
+    th {
+      font-family: High Tower Text;
+    }
+
+    a:link {
+      text-decoration: none;
+    }
+
+    a:visited {
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: none;
+    }
+
+    a:active {
+      text-decoration: none;
+    }
+
+    .style62 {
+      font-size: 18px;
+      color: #000000;
+      font-family: "High Tower Text";
+    }
+
+    .style64 {
+      font-size: 18px;
+      color: #FFFFFF;
+      font-family: "High Tower Text";
+    }
+
+    .header {
+      padding: 0px 0px;
+    }
+
+    .content {
+      padding: 16px;
+    }
+
+    .sticky {
+      position: fixed;
+      top: 0;
+      width: 100%
+    }
+
+    .sticky+.content {
+      padding-top: 102px;
+    }
+
+    .style65 {
+      font-family: "Goudy Old Style";
+      font-size: 24px;
+      color: #000000;
+    }
+
+    .style119 {
+      font-family: Georgia
+    }
+
+    .style125 {
+      font-family: HTOWERT;
+      font-size: 18px;
+    }
+
+    .style127 {
+      font-family: "High Tower Text"
+    }
+
+    .style130 {
+      font-family: "High Tower Text";
+      font-size: 18px;
+    }
+
+    .style132 {
+      font-family: "High Tower Text";
+      font-size: 16px;
+    }
+  </style>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #FFFFFF;
+      background-image: url();
+    }
+
+    input[type=text],
+    input[type=tel],
+    input[type=email],
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      margin-top: 1px;
+      margin-bottom: 1px;
+      resize: vertical;
+    }
+
+    input[type=submit] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 1px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    input[type=submit]:hover {
+      background-color: #45a049;
+    }
+
+    .container {
+      border-radius: 5px;
+      background-color: #f2f2f2;
+      padding: 20px;
+    }
+
+    .style134 {
+      font-size: 18px
+    }
+
+    .style142 {
+      color: #336633;
+      font-size: 20px;
+    }
+
+    .style143 {
+      color: #000000
+    }
+
+    .style145 {
+      font-size: 24px;
+      color: #FFFFFF;
+    }
+
+    .style93 {
+      font-size: 16px;
+      font-family: "Book Antiqua";
+    }
+
+    .style146 {
+      color: #FFFFFF
+    }
+
+    .style91 {
+      color: #0000FF
+    }
+
+    .style120 {
+      color: #FF0000;
+      font-size: 22px;
+      background-color: #FFFF00;
+      padding: 0;
+      border: none;
+      background: none;
+    }
+
+    .style149 {
+      font-size: 20px;
+      color: #009900;
+    }
+
+    .style94 {
+      color: #0000FF;
+      font-family: "Book Antiqua";
+      font-size: 14px;
+    }
+
+    .style94 {
+      color: #FFFFFF
+    }
+
+    .style157 {
+      color: #0000FF;
+      font-family: Alice;
+    }
+  .style159 {	font-size: 55px;
+	color: #006600;
+	font-weight: bold;
+	font-family: Alice;
+}
+  .style154 {font-family: Alice}
+.style160 {font-size: 15px; color: #FFFFFF;}
+.style161 {font-size: 16px}
+.style162 {	color: #FFFFFF;
+	font-family: "Book Antiqua";
+	font-size: 15px;
+}
+  .style166 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
+  .style167 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
+}
+  .style181 {	color: #000099;
+	font-family: Alice;
+}
+  </style>
+</head>
+
+<body>
+  <div class="header" id="myHeader">
+    <table width="100%" border="0" cellpadding="2" cellspacing="4" bgcolor="#FFFFFF">
+      <tr>
+        
+      <th width="5%" scope="col"> <a href="index.html"><img src="images/HEAD.jpg" alt="a" width="88" height="84" longdesc="https://helpsocity.co.in" /></a>      </th>
+      <th valign="top" scope="col"> <div align="left"><span class="style159">HELP Society</span></div></th>
+      </tr>
+    </table>
+    <table width="100%" border="0" cellpadding="2" cellspacing="4" bgcolor="#FFFFFF">
+      <tr bgcolor="#FFFFFF">
+        <th width="12%" height="26" bgcolor="#FFFFFF" scope="col"><span class="style181"><strong>Reg. No.</strong> 18 of 2021</span></th>
+        <th width="12%" bgcolor="#D41F55" scope="col">
+          <a href="index.html" target="_parent" class="style64">Who We Are</a>
+        </th>
+        <th width="12%" bgcolor="#7FDF00" scope="col">
+          <a href="aboutus.html" target="_parent" class="style62">What We Do</a>
+        </th>
+        <th width="12%" bgcolor="#FF9966" scope="col">
+          <a href="services.html" target="_parent" class="style62">Where We Work </a>
+        </th>
+        <th width="12%" bgcolor="#996666" scope="col"><a href="gallery.html" target="_parent" class="style64">Art &amp; Events</a></th>
+        <th width="12%" bgcolor="#FFFF00" scope="col">
+          <a href="contactus.html" target="_parent" class="style62">Contact Us </a>
+        </th>
+        <th width="12%" bgcolor="#33FF99" scope="col">
+          <a href="donate.html" target="_parent" class="style64 style143">Donate</a>
+        </th>
+        <th width="12%" bgcolor="#0099CC" scope="col">
+          <a href="Login.html" target="_parent" class="style64">Login</a>
+        </th>
+      </tr>
+    </table>
+  </div>
+  <div class="content">
+  <img src="images/1.jpg" alt="a" width="100%" height="50" />
+  <table width="100%" border="0" cellspacing="4" cellpadding="2">
+      <tr>
+        <th width="50%" scope="col">
+          <div align="left">
+            
+        <pre class="style65"><span class="style91">Address :</span>
+<span class="style154">
+U. V. Kusuma Kumari,</span>
+<span class="style154">Director,
+HELP Society, Plot No. 134, 
+Pydimamba Colony,
+Kamakshi Nagar, 
+Vizianagaram - 535 003,
+Andhra Pradesh, India.
+
+<span class="style6">Mobile</span></span><span class="style157"> : </span><span class="style154"><span class="style166">+91 90 90 92 92 78</span>
+<span class="style6">E-mail</span></span><span class="style157"> : </span><span class="style154">helpsociety<span class="style167">2021</span>@gmail.com
+<span class="style6">Website</span></span><span class="style157"> : </span><span class="style154">www.helpsociety.co.in</span></pre>
+          </div>
+        </th>
+        <th width="5%" valign="top" scope="col">&nbsp;</th>
+        <th width="45%" valign="top" scope="col">
+          <p>&nbsp;</p>
+          <form id="ajax-contact" method="post" action="email.php">
+            <div id="form-messages"></div>
+            <table width="96%" border="0" cellpadding="2" cellspacing="4" background="images/123bg.gif" bgcolor="#FFFFFF">
+              <tr>
+                <th colspan="2" scope="col">
+                  <span class="style145">Contact Us </span>                </th>
+              </tr>
+              <tr>
+                <th width="44%" scope="row">
+                  <div align="left">
+                    <span class="style125 style146">Your Name: </span>                  </div>                </th>
+                <td width="56%">
+                  <input type="text" id="yourname" name="yourname" required/>                </td>
+              </tr>
+              <tr>
+                <th scope="row">
+                  <div align="left">
+                    <span class="style130 style146">Country : </span>                  </div>                </th>
+                <td>
+                  <select id="country" name="country" class="float-right" required>
+                    <option value="">Choose</option>
+                    <option value="Aland Islands">Aland Islands</option>
+                    <option value="Albania">Albania</option>
+                    <option value="Algeria">Algeria</option>
+                    <option value="American Samoa">American Samoa</option>
+                    <option value="Angola">Angola</option>
+                    <option value="Anguilla">Anguilla</option>
+                    <option value="Antigua And Barbuda">Antigua And Barbuda</option>
+                    <option value="Arab Republic Of Egypt">Arab Republic Of Egypt</option>
+                    <option value="Argentina">Argentina</option>
+                    <option value="Armenia">Armenia</option>
+                    <option value="Aruba">Aruba</option>
+                    <option value="Australia">Australia</option>
+                    <option value="Austria">Austria</option>
+                    <option value="Bahamas">Bahamas</option>
+                    <option value="Bahrain">Bahrain</option>
+                    <option value="Barbados West Indies">Barbados West Indies</option>
+                    <option value="Belarus Republic">Belarus Republic</option>
+                    <option value="Belgium">Belgium</option>
+                    <option value="Belize C.a.">Belize C.a.</option>
+                    <option value="Bermuda">Bermuda</option>
+                    <option value="Bethlehem">Bethlehem</option>
+                    <option value="Bolivia">Bolivia</option>
+                    <option value="Bosnia And Herzegovenia">Bosnia And Herzegovenia</option>
+                    <option value="Botswana">Botswana</option>
+                    <option value="Brazil">Brazil</option>
+                    <option value="British Virgin Isls">British Virgin Isls</option>
+                    <option value="Brunei">Brunei</option>
+                    <option value="Bulgaria">Bulgaria</option>
+                    <option value="Burkina Faso">Burkina Faso</option>
+                    <option value="Cambodia Kingdom Of">Cambodia Kingdom Of</option>
+                    <option value="Canada">Canada</option>
+                    <option value="Cape Verde">Cape Verde</option>
+                    <option value="Cayman Islands">Cayman Islands</option>
+                    <option value="Central African Republic">Central African Republic</option>
+                    <option value="Channel Isle">Channel Isle</option>
+                    <option value="Chile">Chile</option>
+                    <option value="China">China</option>
+                    <option value="Cnmi">Cnmi</option>
+                    <option value="Colombia">Colombia</option>
+                    <option value="Comoro Islands">Comoro Islands</option>
+                    <option value="Congo Dem Republic Of The">Congo Dem Republic Of The</option>
+                    <option value="Cook Islands">Cook Islands</option>
+                    <option value="Costa Rica">Costa Rica</option>
+                    <option value="Croatia">Croatia</option>
+                    <option value="Cyprus">Cyprus</option>
+                    <option value="Czech Republic">Czech Republic</option>
+                    <option value="Denmark">Denmark</option>
+                    <option value="Dominica West Indies">Dominica West Indies</option>
+                    <option value="Dominican Republic">Dominican Republic</option>
+                    <option value="Ecuador">Ecuador</option>
+                    <option value="El Salvador">El Salvador</option>
+                    <option value="England">England</option>
+                    <option value="Equatorial Guinea">Equatorial Guinea</option>
+                    <option value="Estonia">Estonia</option>
+                    <option value="Ethiopia">Ethiopia</option>
+                    <option value="Faroe Islands">Faroe Islands</option>
+                    <option value="Fiji Islands">Fiji Islands</option>
+                    <option value="Finland">Finland</option>
+                    <option value="France">France</option>
+                    <option value="French Guiana">French Guiana</option>
+                    <option value="Gabon Republic">Gabon Republic</option>
+                    <option value="Germany">Germany</option>
+                    <option value="Gibraltar">Gibraltar</option>
+                    <option value="Greece">Greece</option>
+                    <option value="Greenland">Greenland</option>
+                    <option value="Grenada">Grenada</option>
+                    <option value="Guadeloupe F W I">Guadeloupe F W I</option>
+                    <option value="Guam">Guam</option>
+                    <option value="Guatemala">Guatemala</option>
+                    <option value="Guyana">Guyana</option>
+                    <option value="Haiti">Haiti</option>
+                    <option value="Honduras">Honduras</option>
+                    <option value="Hong Kong China">Hong Kong China</option>
+                    <option value="Hungary">Hungary</option>
+                    <option value="Iceland">Iceland</option>
+                    <option value="India">India</option>
+                    <option value="Indonesia">Indonesia</option>
+                    <option value="Isle Of Man">Isle Of Man</option>
+                    <option value="Israel">Israel</option>
+                    <option value="Italy">Italy</option>
+                    <option value="Jamaica">Jamaica</option>
+                    <option value="Japan">Japan</option>
+                    <option value="Jordan">Jordan</option>
+                    <option value="Kazakhstan">Kazakhstan</option>
+                    <option value="Kenya Africa">Kenya Africa</option>
+                    <option value="Kingdom Of Tonga">Kingdom Of Tonga</option>
+                    <option value="Lebanon">Lebanon</option>
+                    <option value="Lesotho">Lesotho</option>
+                    <option value="Liechtenstein">Liechtenstein</option>
+                    <option value="Lithuania">Lithuania</option>
+                    <option value="Luxembourg">Luxembourg</option>
+                    <option value="Macau">Macau</option>
+                    <option value="Macedonia Fyrom">Macedonia Fyrom</option>
+                    <option value="Madeira Isles">Madeira Isles</option>
+                    <option value="Malagasy Republic/Madagascar ">Malagasy Republic/Madagascar </option>
+                    <option value="Malawi">Malawi</option>
+                    <option value="Malaysia">Malaysia</option>
+                    <option value="Maldives">Maldives</option>
+                    <option value="Malta">Malta</option>
+                    <option value="Marshall Islands">Marshall Islands</option>
+                    <option value="Martinique">Martinique</option>
+                    <option value="Mauritania">Mauritania</option>
+                    <option value="Mauritius">Mauritius</option>
+                    <option value="Mayotte">Mayotte</option>
+                    <option value="Mexico">Mexico</option>
+                    <option value="Micronesia">Micronesia</option>
+                    <option value="Mongolia">Mongolia</option>
+                    <option value="Montserrat">Montserrat</option>
+                    <option value="Morocco">Morocco</option>
+                    <option value="Mozambique">Mozambique</option>
+                    <option value="Namibia">Namibia</option>
+                    <option value="Nepal">Nepal</option>
+                    <option value="Netherland Antilles">Netherland Antilles</option>
+                    <option value="Netherlands">Netherlands</option>
+                    <option value="New Zealand">New Zealand</option>
+                    <option value="Nicaragua">Nicaragua</option>
+                    <option value="Nigeria">Nigeria</option>
+                    <option value="Norfolk Island">Norfolk Island</option>
+                    <option value="Northern Ireland">Northern Ireland</option>
+                    <option value="Norway">Norway</option>
+                    <option value="Pakistan">Pakistan</option>
+                    <option value="Palau  Republic Of">Palau Republic Of</option>
+                    <option value="Panama">Panama</option>
+                    <option value="Papua New Guinea">Papua New Guinea</option>
+                    <option value="Paraguay">Paraguay</option>
+                    <option value="Peru">Peru</option>
+                    <option value="Philippines">Philippines</option>
+                    <option value="Poland">Poland</option>
+                    <option value="Portugal">Portugal</option>
+                    <option value="Prin Of Monaco">Prin Of Monaco</option>
+                    <option value="Principat D'andorra">Principat D'andorra</option>
+                    <option value="Puerto Rico">Puerto Rico</option>
+                    <option value="Republic Of Bangladesh">Republic Of Bangladesh</option>
+                    <option value="Republic Of Benin">Republic Of Benin</option>
+                    <option value="Republic Of Burundi">Republic Of Burundi</option>
+                    <option value="Republic Of Cameroon">Republic Of Cameroon</option>
+                    <option value="Republic Of Chad">Republic Of Chad</option>
+                    <option value="Republic Of Congo">Republic Of Congo</option>
+                    <option value="Republic Of Djibouti">Republic Of Djibouti</option>
+                    <option value="Republic Of Gambia">Republic Of Gambia</option>
+                    <option value="Republic Of Georgia">Republic Of Georgia</option>
+                    <option value="Republic Of Ghana">Republic Of Ghana</option>
+                    <option value="Republic Of Guinea">Republic Of Guinea</option>
+                    <option value="Republic Of Guinea Bissau">Republic Of Guinea Bissau</option>
+                    <option value="Republic Of Iraq">Republic Of Iraq</option>
+                    <option value="Republic Of Ireland">Republic Of Ireland</option>
+                    <option value="Republic Of Korea">Republic Of Korea</option>
+                    <option value="Republic Of Kyrghyzstan">Republic Of Kyrghyzstan</option>
+                    <option value="Republic Of Latvia">Republic Of Latvia</option>
+                    <option value="Republic Of Liberia">Republic Of Liberia</option>
+                    <option value="Republic Of Mali">Republic Of Mali</option>
+                    <option value="Republic Of Moldova">Republic Of Moldova</option>
+                    <option value="Republic Of Niger">Republic Of Niger</option>
+                    <option value="Republic Of Russia">Republic Of Russia</option>
+                    <option value="Republic Of Rwanda">Republic Of Rwanda</option>
+                    <option value="Republic Of San Marino">Republic Of San Marino</option>
+                    <option value="Republic Of Senegal">Republic Of Senegal</option>
+                    <option value="Republic Of South Africa">Republic Of South Africa</option>
+                    <option value="Republic Of Sri Lanka">Republic Of Sri Lanka</option>
+                    <option value="Republic Of The Ivory Coast">Republic Of The Ivory Coast</option>
+                    <option value="Republic Of The Sudan">Republic Of The Sudan</option>
+                    <option value="Republic Of Trinidad-tobago">Republic Of Trinidad-tobago</option>
+                    <option value="Reunion">Reunion</option>
+                    <option value="Romania">Romania</option>
+                    <option value="Scotland">Scotland</option>
+                    <option value="Serbia-montenegro">Serbia-montenegro</option>
+                    <option value="Seychelles">Seychelles</option>
+                    <option value="Sierra Leone">Sierra Leone</option>
+                    <option value="Singapore">Singapore</option>
+                    <option value="Slovakia">Slovakia</option>
+                    <option value="Slovenia">Slovenia</option>
+                    <option value="Somalia">Somalia</option>
+                    <option value="Spain">Spain</option>
+                    <option value="St. Barthelemy">St. Barthelemy</option>
+                    <option value="St. Christopher Nevis">St. Christopher Nevis</option>
+                    <option value="St. Lucia">St. Lucia</option>
+                    <option value="St. Martin">St. Martin</option>
+                    <option value="St. Pierre And Miquelon Islands">St. Pierre And Miquelon Islands</option>
+                    <option value="St. Vincent">St. Vincent</option>
+                    <option value="State Of Vatican City">State Of Vatican City</option>
+                    <option value="Surinam">Surinam</option>
+                    <option value="Swaziland">Swaziland</option>
+                    <option value="Sweden">Sweden</option>
+                    <option value="Switzerland">Switzerland</option>
+                    <option value="Tahiti">Tahiti</option>
+                    <option value="Taiwan">Taiwan</option>
+                    <option value="Tanzania">Tanzania</option>
+                    <option value="Thailand">Thailand</option>
+                    <option value="Timor Leste">Timor Leste</option>
+                    <option value="Togo">Togo</option>
+                    <option value="Tunisia">Tunisia</option>
+                    <option value="Turkey">Turkey</option>
+                    <option value="U.s. Virgin Islands">U.s. Virgin Islands</option>
+                    <option value="Uganda">Uganda</option>
+                    <option value="Ukraine">Ukraine</option>
+                    <option value="United Arab Emirates">United Arab Emirates</option>
+                    <option value="United States Of America">United States Of America</option>
+                    <option value="Uruguay">Uruguay</option>
+                    <option value="Vanuatu">Vanuatu</option>
+                    <option value="Venezuela">Venezuela</option>
+                    <option value="Wales">Wales</option>
+                    <option value="Western Samoa">Western Samoa</option>
+                    <option value="Zambia">Zambia</option>
+                    <option value="Zimbabwe">Zimbabwe</option>
+                    <option value="Other">Other</option>
+                  </select>                </td>
+              </tr>
+              <tr>
+                <th scope="row">
+                  <div align="left">
+                    <span class="style64">Mobile No </span>
+                    <span class="style125 style146">: </span>                  </div>                </th>
+                <td>
+              <input id="mobile" type="tel" name="mobile" maxlength=10 required/>              </tr>
+              <tr>
+                <th scope="row">
+                  <div align="left">
+                    <span class="style125 style146">
+                      <span class="style127">Your email ID </span>: </span>                  </div>                </th>
+                <td>
+                  <input id="email" type="email" name="email" required/>                </td>
+              </tr>
+              <tr>
+                <th scope="row">
+                  <div align="left">
+                    <span class="style119 style146">
+                      <span class="style130 style134">How can we contact you</span>
+                      <span class="style134">?</span>                    </span>                  </div>                </th>
+                <td>
+                  <span class="style119 style146">
+                    <font size="2">
+                      <label>
+                        <input id="contact" type="radio" name="contact_preference" value="email" />
+                      </label>
+                    </font>
+                    <label>
+                      <span class="style132 ">Email</span>                    </label>
+                    <font size="2">
+                      <label>
+                        <input id="contact" type="radio" name="contact_preference" value="phone" />
+                      </label>
+                    </font>
+                    <label>
+                      <span class="style132 ">Phone</span>                    </label>
+                  </span>                </td>
+              </tr>
+              <tr>
+                <th scope="row">
+                  <div align="left">
+                    <span class="style125 style146">
+                      <span class="style127">Message</span>:</span>                  </div>                </th>
+                <td>
+                  <textarea id="message" rows="4" cols="50" name="message"></textarea>                </td>
+              </tr>
+              <tr>
+                <th colspan="2" bgcolor="#FFFF00" scope="row">
+                  <span class="style142">*</span>
+                  <span class="style6">
+                    <input type="hidden" name="form_submitted" value="1" />
+                    <input class="style120" type="submit" name="submit" value="Submit" />
+                  </span>
+                  <span class="style142">*</span>
+                  </a>                </th>
+              </tr>
+            </table>
+          </form>
+        </th>
+      </tr>
+</table>
+    <p align="center"><img src="images/a_s_1.jpg" width="100%" height="320" />    </p>
+    <div align="justify" class="style93"><span class="style161"> <font size="2"> <font size="5"> <font size="3"> <font size="4">
+    <script>
+window.onscroll = function() {myFunction()};
+
+var header = document.getElementById("myHeader");
+var sticky = header.offsetTop;
+
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    header.classList.add("sticky");
+  } else {
+    header.classList.remove("sticky");
+  }
+}
+      </script>
+    <font size="2"><font size="5"><font size="3"><font size="4"><font color="#0000FF"><span class="style98"><span class="style154"><a href="index.html" class="footerlink"><strong>&copy; 
+  CopyRights Reserved 2021,&nbsp;&nbsp;</strong></a><strong>Designed &amp; Powered 
+  by JKGC.<span class="style160"> . </span></strong></span><strong><span class="style162">. . . . .</span></strong></span></font></font></font></font></font><font color="#0000FF"><span class="style98 style154"><strong><span class="style160"> . . . . . . . . . . . . . . . . . . . .. . . . . . . . . . . . . . . . . . .</span><span class="style149">Visitors 
+Count :</span><img src="http://hitwebcounter.com/counter/counter.php?page=6949344&amp;style=0009&amp;nbdigits=7&amp;type=ip&amp;initCount=0" title="" alt="a"   border="0" /></strong></span></font></font></font></font></font></span></div>
+    <p align="center" class="style143">
+      <script>
+        window.onscroll = function () { myFunction() };
+
+        var header = document.getElementById("myHeader");
+        var sticky = header.offsetTop;
+
+        function myFunction() {
+          if (window.pageYOffset >= sticky) {
+            header.classList.add("sticky");
+          } else {
+            header.classList.remove("sticky");
+          }
+        }
+      </script>
+    </p>
+</body>
+
+</html>
